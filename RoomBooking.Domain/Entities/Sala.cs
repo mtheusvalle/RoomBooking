@@ -9,6 +9,8 @@ public class Sala
     public string Nome { get; private set; }
     public Capacidade Capacidade { get; private set; }
 
+    private Sala() { }
+
     public Sala(Guid id, string nome, Capacidade capacidade)
     {
         if (string.IsNullOrWhiteSpace(nome))
@@ -25,5 +27,12 @@ public class Sala
             throw new SalaInvalidaException("O nome da sala não pode ser vazio.");
 
         Nome = novoNome;
+    }
+
+    public void AtualizarCapacidade(Capacidade novaCapacidade)
+    {
+        if (novaCapacidade == null)
+            throw new SalaInvalidaException("Capacidade deve ser fornecida.");
+        Capacidade = novaCapacidade;
     }
 }

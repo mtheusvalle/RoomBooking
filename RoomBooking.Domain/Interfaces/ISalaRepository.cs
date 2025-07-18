@@ -7,4 +7,5 @@ public interface ISalaRepository
     Task<Sala> ObterPorIdAsync(Guid id);
     Task<IEnumerable<Sala>> ListarTodasAsync();
     Task AdicionarAsync(Sala sala);
+    Task AtualizarAsync(Sala sala);
 }

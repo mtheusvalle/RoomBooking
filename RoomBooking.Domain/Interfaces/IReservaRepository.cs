@@ -8,4 +8,5 @@ public interface IReservaRepository
     Task<IEnumerable<Reserva>> ObterPorSalaAsync(Guid salaId);
     Task AdicionarAsync(Reserva reserva);
     Task AtualizarAsync(Reserva reserva);
+    Task<bool> ExcedeCapacidadeAsync(Guid salaId, int qntdPessoas);
 }

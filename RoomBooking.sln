@@ -1,5 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36310.24
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoomBooking.Domain", "RoomBooking.Domain\RoomBooking.Domain.csproj", "{3C29133B-AA16-4068-93CA-BA5D89E7FC1C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoomBooking.Application", "RoomBooking.Application\RoomBooking.Application.csproj", "{6CE2EF78-04D0-4C29-AB5D-D7AC4F7896FD}"
@@ -7,6 +10,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoomBooking.Infrastructure", "RoomBooking.Infrastructure\RoomBooking.Infrastructure.csproj", "{F740696A-71EE-4104-9328-74DCC5653DE5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoomBooking.Api", "RoomBooking.Api\RoomBooking.Api.csproj", "{420CC5FD-5D0F-417F-B70B-E5172341EDFF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoomBooking.Tests", "RoomBooking.Tests\RoomBooking.Tests.csproj", "{80065C3F-13EA-440A-9890-FC810BEB0532}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -30,5 +35,15 @@ Global
 		{420CC5FD-5D0F-417F-B70B-E5172341EDFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{420CC5FD-5D0F-417F-B70B-E5172341EDFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{420CC5FD-5D0F-417F-B70B-E5172341EDFF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{80065C3F-13EA-440A-9890-FC810BEB0532}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80065C3F-13EA-440A-9890-FC810BEB0532}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80065C3F-13EA-440A-9890-FC810BEB0532}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80065C3F-13EA-440A-9890-FC810BEB0532}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A71E9B66-4C4E-4DBA-9B2C-4CBB7631855F}
 	EndGlobalSection
 EndGlobal

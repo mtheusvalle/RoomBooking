@@ -27,8 +27,16 @@ public class NotificationClient : INotificationService
 
     public async Task NotificarReservaCriadaAsync(ReservaDto reserva)
     {
-        var content = new StringContent(JsonSerializer.Serialize(reserva), System.Text.Encoding.UTF8, "application/json");
-        await _retryPolicy.ExecuteAsync(() =>
-            _circuitBreaker.ExecuteAsync(() => _httpClient.PostAsync("/notifications/reserva", content)));
+        #if DEBUG
+                // Em ambiente de desenvolvimento, apenas loga
+                Console.WriteLine($"[Mock] Notificação de reserva enviada: {JsonSerializer.Serialize(reserva)}");
+                await Task.CompletedTask;
+        #else
+            var content = new StringContent(JsonSerializer.Serialize(reserva), Encoding.UTF8, "application/json");
+
+            await _retryPolicy.ExecuteAsync(() =>
+                _circuitBreaker.ExecuteAsync(() =>
+                    _httpClient.PostAsync("/notifications/reserva", content)));
+        #endif
     }
 }

@@ -6,8 +6,8 @@ namespace RoomBooking.Infrastructure.Persistence;
 
 public class RoomBookingDbContext : DbContext
 {
-    public DbSet<Sala> Salas { get; set; }
-    public DbSet<Reserva> Reservas { get; set; }
+    public DbSet<Sala> Salas => Set<Sala>();
+    public DbSet<Reserva> Reservas => Set<Reserva>();
 
     public RoomBookingDbContext(DbContextOptions<RoomBookingDbContext> options)
         : base(options) { }

@@ -32,9 +32,17 @@ public class ReservaRepository : IReservaRepository, IReservaConflictValidator
     public async Task<bool> ExisteConflitoAsync(Guid salaId, Periodo periodo)
     {
         return await _context.Reservas
-            .AnyAsync(r => r.SalaId == salaId
-                           && r.Periodo.Inicio < periodo.Fim
-                           && periodo.Inicio < r.Periodo.Fim);
+                            .AnyAsync(r => r.SalaId == salaId &&
+                                           r.Periodo.Inicio < periodo.Fim &&
+                                           periodo.Inicio < r.Periodo.Fim);
+    }
+
+    public async Task<bool> ExcedeCapacidadeAsync(Guid salaId, int qntdPessoas)
+    {
+        return await _context.Salas
+            .Where(s => s.Id == salaId)
+            .Select(s => s.Capacidade.Quantidade)
+            .FirstOrDefaultAsync() < qntdPessoas;
     }
 
     public async Task AtualizarAsync(Reserva reserva)

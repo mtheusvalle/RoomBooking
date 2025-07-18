@@ -26,12 +26,6 @@ public class SalaRepository : ISalaRepository
     public async Task<IEnumerable<Sala>> ListarTodasAsync()
         => await _context.Salas.ToListAsync();
 
-    public async Task DeletarAsync(Sala sala)
-    {
-        _context.Salas.Remove(sala);
-        await _context.SaveChangesAsync();
-    }
-
     public async Task AtualizarAsync(Sala sala)
     {
         _context.Salas.Update(sala);

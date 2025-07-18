@@ -45,7 +45,7 @@ namespace RoomBooking.Tests.Application.Commands.CriarReserva
             var handler = new CriarReservaCommandHandler(
                 _resRepo.Object, _salaRepo.Object,
                 _conflictValidator.Object,
-                _notification.Object, _mapper.Object);
+                _notification.Object, _mapper.Object, _mediator.Object);
 
             // Act
             var result = await handler.Handle(command, default);
@@ -77,7 +77,7 @@ namespace RoomBooking.Tests.Application.Commands.CriarReserva
             var handler = new CriarReservaCommandHandler(
                 _resRepo.Object, _salaRepo.Object,
                 _conflictValidator.Object,
-                _notification.Object, _mapper.Object);
+                _notification.Object, _mapper.Object, _mediator.Object);
 
             // Act & Assert
             await Assert.ThrowsAsync<ReservaInvalidaException>(() => handler.Handle(command, default));
@@ -96,7 +96,7 @@ namespace RoomBooking.Tests.Application.Commands.CriarReserva
             var handler = new CriarReservaCommandHandler(
                 _resRepo.Object, _salaRepo.Object,
                 _conflictValidator.Object,
-                _notification.Object, _mapper.Object);
+                _notification.Object, _mapper.Object, _mediator.Object);
             // Act & Assert
             await Assert.ThrowsAsync<ReservaInvalidaException>(() => handler.Handle(command, default));
         }

@@ -17,23 +17,20 @@ namespace RoomBooking.Tests.Application.Commands.CriarSala
             var repo = new Mock<ISalaRepository>();
             var mapper = new Mock<IMapper>();
             var command = new CriarSalaCommand("Sala B", 20);
-            var salaId = Guid.NewGuid();
-            var sala = new Sala(salaId, command.Nome, new Capacidade(command.Capacidade));
-            var salaDto = new SalaDto { Id = salaId, Nome = command.Nome, Capacidade = command.Capacidade };
-        
-            mapper.Setup(m => m.Map<SalaDto>(It.IsAny<Sala>())).Returns(salaDto);
+
+            mapper.Setup(m => m.Map<SalaDto>(It.IsAny<Sala>()))
+                  .Returns<Sala>(s => new SalaDto { Id = s.Id, Nome = s.Nome, Capacidade = s.Capacidade.Quantidade });
 
             var handler = new CriarSalaCommandHandler(repo.Object, mapper.Object);
 
             var result = await handler.Handle(command, CancellationToken.None);
 
             result.Should().NotBeNull();
-            result.Id.Should().Be(salaId);
             result.Nome.Should().Be("Sala B");
             result.Capacidade.Should().Be(20);
 
             repo.Verify(x => x.AdicionarAsync(
-                It.Is<Sala>(s => s.Id == salaId && s.Nome == "Sala B" && s.Capacidade.Quantidade == 20)), Times.Once);
+                It.Is<Sala>(s => s.Nome == "Sala B" && s.Capacidade.Quantidade == 20)), Times.Once);
         }
 
         [Fact]
